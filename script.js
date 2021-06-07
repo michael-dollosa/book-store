@@ -45,15 +45,15 @@ store.prototype.restockBook = function (title, quantity) {
 
 //refactored - 8 lines
 store.prototype.sellBook = function (bookTitle, bookQuantity) {
-  //destructure this
+  //destructure this (optional)
   let { name, list, earnings} = this
   //find specified book
   const book = list.find((book) => book.title === bookTitle);
-  //return invalid early
+  //return invalid early if no book found
   if(!book) return console.log("We don't sell that book here")
   //destructure book
   let {title, quantity, value} = book
-  //return invalid early
+  //return invalid early if quantity is insufficient
   if(quantity < bookQuantity) return console.log(`${title} has only ${quantity} left`)
   //main logic for sell
   quantity -= bookQuantity
